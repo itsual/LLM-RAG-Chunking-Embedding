@@ -99,17 +99,105 @@ flowchart LR
 
 ---
 
+## 🌐 RAG Decision Tree
+
+```mermaid
+flowchart LR
+    Start[What is your primary goal for using RAG?]
+    
+    Start --> Basic[Basic Q&A from static knowledge base]
+    Start --> Accuracy[Improve retrieval accuracy and efficiency]
+    Start --> Structure[Enhance retrieval structure and flexibility]
+    Start --> Dynamic[Handle dynamic queries, self-improvement, or agent-based reasoning]
+    
+    Basic --> NaiveRAG[Naive RAG]
+    Structure --> ModularRAG[Modular RAG]
+    
+    %% Advanced RAG Methods - Pre-Retrieval
+    Accuracy --> PreRet{Need to refine data before retrieval?}
+    PreRet --> Dedup[Remove redundant data]
+    PreRet --> Density[Increase information density]
+    PreRet --> HypQ[Improve with related questions]
+    
+    Dedup --> DedupRAG[Deduplication RAG]
+    Density --> DensityRAG[Increased Information Density RAG]
+    HypQ --> HypQRAG[Hypothetical Question Indexing RAG]
+    
+    %% Advanced RAG Methods - Retrieval
+    Accuracy --> Ret{Need better retrieval mechanisms?}
+    Ret --> OptQuery[Optimize queries]
+    Ret --> Hier[Use hierarchical categories]
+    Ret --> HypDoc[Generate hypothetical docs]
+    Ret --> Route[Route queries dynamically]
+    Ret --> MultiQ[Break into multiple queries]
+    Ret --> Hybrid[Combine keyword & semantic]
+    Ret --> GraphS[Use knowledge graph]
+    
+    OptQuery --> OptQueryRAG[Optimized Search Query RAG]
+    Hier --> HierRAG[Hierarchical Index Retrieval RAG]
+    HypDoc --> HyDERAG[HyDE RAG]
+    Route --> RouteRAG[Query Routing RAG]
+    MultiQ --> SelfQueryRAG[Self-Query Retrieval RAG]
+    Hybrid --> HybridRAG[Hybrid Search RAG]
+    GraphS --> GraphSearchRAG[Graph Search RAG]
+    
+    %% Advanced RAG Methods - Post-Retrieval
+    Accuracy --> PostRet{Need to refine search results?}
+    PostRet --> Rerank[Reorder documents]
+    PostRet --> Compress[Reduce prompt size]
+    PostRet --> Filter[Score and filter docs]
+    PostRet --> Expand[Expand search queries]
+    PostRet --> Feedback[Use feedback for improvement]
+    PostRet --> Cost[Optimize for cost]
+    
+    Rerank --> RerankRAG[Reranking RAG]
+    Compress --> CompressRAG[Contextual Prompt Compression RAG]
+    Filter --> CRAG[Corrective RAG]
+    Expand --> ExpandRAG[Query Expansion RAG]
+    Feedback --> FeedbackRAG[Refeed Retrieval Feedback RAG]
+    Cost --> CostRAG[Cost-Constrained RAG]
+    
+    %% Specialized RAG Methods
+    Dynamic --> MultiStep{Need multi-step reasoning?}
+    Dynamic --> Memory{Need memory across interactions?}
+    Dynamic --> StrucKnow{Need structured data retrieval?}
+    Dynamic --> GenOpt{Need generation optimization?}
+    
+    MultiStep --> Agent[AI agent for multiple sources]
+    MultiStep --> Adapt[Dynamic adaptation]
+    
+    Agent --> AgentRAG[Agentic RAG]
+    Adapt --> AdaptRAG[Adaptive RAG]
+    
+    Memory --> Memo[Cross-interaction memory]
+    Memory --> SelfImp[Self-improvement]
+    
+    Memo --> MemoRAG[Memo RAG]
+    SelfImp --> SelfRAG[Self-RAG]
+    
+    StrucKnow --> GraphRAG[GraphRAG]
+    
+    GenOpt --> CoT[Step-by-step reasoning]
+    GenOpt --> FineTune[Domain-specific tuning]
+    GenOpt --> NLI[Filter irrelevant context]
+    
+    CoT --> CoTRAG[Chain-of-Thought RAG]
+    FineTune --> FineTuneRAG[Fine-Tuning RAG]
+    NLI --> NLIRAG[Natural Language Inference RAG]
+    
+    %% Styling
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style NaiveRAG,ModularRAG fill:#bbf,stroke:#333,stroke-width:2px
+    style DedupRAG,DensityRAG,HypQRAG fill:#bfb,stroke:#333,stroke-width:2px
+    style OptQueryRAG,HierRAG,HyDERAG,RouteRAG,SelfQueryRAG,HybridRAG,GraphSearchRAG fill:#fbf,stroke:#333,stroke-width:2px
+    style RerankRAG,CompressRAG,CRAG,ExpandRAG,FeedbackRAG,CostRAG fill:#fbb,stroke:#333,stroke-width:2px
+    style AgentRAG,AdaptRAG,MemoRAG,SelfRAG,GraphRAG,CoTRAG,FineTuneRAG,NLIRAG fill:#bff,stroke:#333,stroke-width:2px
+```
+---
+
 ## 🤝 Contribution
 
-We welcome contributions to improve this repository! If you'd like to contribute:
+Contributions are welcome to improve this repository! If you'd like to contribute:
 1. **Fork the repository** and create a new branch.
 2. **Make your changes**, ensuring they align with the project’s goals.
 3. **Submit a Pull Request** and include a clear description of the update.
-
-### 📢 Guidelines
-- Follow best coding practices and format your code properly.
-- Keep documentation clear and concise.
-- Ensure any added examples are functional and well-documented.
-
-### 💡 Want to Contribute?
-Check out the **Issues** section for open tasks or propose a new feature!

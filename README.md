@@ -101,6 +101,12 @@ flowchart LR
 
 ## 🌐 RAG Decision Tree
 
+### Interactive RAG Decision Tree
+Click the link below to view the HTML file:
+
+<a href="https://github.com/itsual/LLM-RAG-Chunking-Embedding/blob/main/interactive-rag-tree.html" target="_blank">Open HTML File</a>
+
+
 ```mermaid
 flowchart LR
     Start[What is your primary goal for using RAG?]

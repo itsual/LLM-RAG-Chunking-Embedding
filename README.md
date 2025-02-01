@@ -102,9 +102,8 @@ flowchart LR
 ## 🌐 RAG Decision Tree
 
 ### Interactive RAG Decision Tree
-Click the link below to view the HTML file:
+[Download HTML File](https://raw.githubusercontent.com/username/repo-name/branch-name/path/to/file.html) (Right-click and select "Save link as" to download)
 
-<a href="https://github.com/itsual/LLM-RAG-Chunking-Embedding/blob/main/interactive-rag-tree.html" target="_blank">Open HTML File</a>
 
 
 ```mermaid

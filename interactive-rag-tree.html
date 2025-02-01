@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive RAG Decision Tree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            margin: 20px;
+            color: #333;
+        }
+
+        .tree {
+            margin: 20px;
+        }
+
+        .node {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .node-content {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .node-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .children {
+            display: none;
+            margin-left: 40px;
+            position: relative;
+        }
+
+        .children::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            bottom: 0;
+            border-left: 2px solid #ccc;
+        }
+
+        .node.expanded > .children {
+            display: block;
+        }
+
+        .start-node {
+            background: #f8e1f4;
+            border: 2px solid #e066d3;
+        }
+
+        .decision-node {
+            background: #e1ebf8;
+            border: 2px solid #66a3e0;
+        }
+
+        .method-node {
+            background: #e1f8e4;
+            border: 2px solid #66e076;
+        }
+
+        .arrow {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 20px;
+            border-top: 2px solid #ccc;
+        }
+
+        .legend {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .legend-item {
+            margin: 5px 0;
+        }
+
+        .legend-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-box" style="background: #f8e1f4; border: 2px solid #e066d3;"></span>
+            <span>Start Node</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-box" style="background: #e1ebf8; border: 2px solid #66a3e0;"></span>
+            <span>Decision Node</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-box" style="background: #e1f8e4; border: 2px solid #66e076;"></span>
+            <span>RAG Method</span>
+        </div>
+    </div>
+
+    <div class="tree">
+        <div class="node">
+            <div class="node-content start-node">What is your primary goal for using RAG?</div>
+            <div class="children">
+                <div class="node">
+                    <span class="arrow"></span>
+                    <div class="node-content decision-node">Basic Q&A from static knowledge base</div>
+                    <div class="children">
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content method-node">Naive RAG</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node">
+                    <span class="arrow"></span>
+                    <div class="node-content decision-node">Enhance retrieval structure and flexibility</div>
+                    <div class="children">
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content method-node">Modular RAG</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node">
+                    <span class="arrow"></span>
+                    <div class="node-content decision-node">Improve retrieval accuracy and efficiency</div>
+                    <div class="children">
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need to refine data before retrieval?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Deduplication RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Increased Information Density RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Hypothetical Question Indexing RAG</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need better retrieval mechanisms?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Optimized Search Query RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Hierarchical Index Retrieval RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">HyDE RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Query Routing RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Self-Query Retrieval RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Hybrid Search RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Graph Search RAG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need to refine search results?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Reranking RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Contextual Prompt Compression RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Corrective RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Query Expansion RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Refeed Retrieval Feedback RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Cost-Constrained RAG</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node">
+                    <span class="arrow"></span>
+                    <div class="node-content decision-node">Handle dynamic queries and self-improvement</div>
+                    <div class="children">
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need multi-step reasoning?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Agentic RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Adaptive RAG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need memory across interactions?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Memo RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Self-RAG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need structured data retrieval?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">GraphRAG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <span class="arrow"></span>
+                            <div class="node-content decision-node">Need generation optimization?</div>
+                            <div class="children">
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Chain-of-Thought RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Fine-Tuning RAG</div>
+                                </div>
+                                <div class="node">
+                                    <span class="arrow"></span>
+                                    <div class="node-content method-node">Natural Language Inference RAG</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nodes = document.querySelectorAll('.node-content');
+            
+            nodes.forEach(node => {
+                node.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parentNode = this.parentElement;
+                    parentNode.classList.toggle('expanded');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
